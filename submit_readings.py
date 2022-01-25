@@ -177,10 +177,10 @@ if __name__ == '__main__':
     electricity_success = False
 
     if args.gas is not None:
-        gas_success = submit_gas_reading(fetched_account_info, 943)
+        gas_success = submit_gas_reading(fetched_account_info, args.gas)
 
     if args.elec is not None:
-        electricity_success = submit_electricity_reading(fetched_account_info, 2799)
+        electricity_success = submit_electricity_reading(fetched_account_info, args.elec)
 
     print(
         f"""Electricity ⚡️: {"Success 😎" if electricity_success else "Failed ☹️"}
