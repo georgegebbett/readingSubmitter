@@ -4,8 +4,10 @@ class AccountInfo:
         self.mpan = input_dict["account"]["properties"][0]["electricityMeterPoints"][0]["mpan"]
         self.electricity_register = input_dict["account"]["properties"][0]["electricityMeterPoints"][0]["meters"][0]["registers"][0]["identifier"]
         self.electricity_meter_serial = input_dict["account"]["properties"][0]["electricityMeterPoints"][0]["meters"][0]["serialNumber"]
+
         self.mprn = input_dict["account"]["properties"][0]["gasMeterPoints"][0]["mprn"]
         self.gas_meter_serial = input_dict["account"]["properties"][0]["gasMeterPoints"][0]["meters"][0]["serialNumber"]
+        self.expected_gas_reading_range = input_dict["account"]["properties"][0]["gasMeterPoints"][0]["meters"][0]["registers"][0]["expectedReadingRanges"][0]
 
     def __repr__(self):
         return f"""
@@ -16,5 +18,6 @@ class AccountInfo:
     Gas:        
         MPRN: {self.mprn}
         Meter serial: {self.gas_meter_serial}
+        Expected reading range: {self.expected_gas_reading_range}
         """
 

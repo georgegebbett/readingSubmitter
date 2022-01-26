@@ -79,7 +79,7 @@ def get_meter_info(ac_no: str):
               }}, gasMeterPoints {{
                 id, mprn, meters {{
                   serialNumber, registers {{
-                    id
+                    expectedReadingRanges
                   }}
                 }}
               }}
@@ -177,6 +177,9 @@ if __name__ == '__main__':
     electricity_success = False
 
     if args.gas is not None:
+        if args.gas < fetched_account_info.expected_gas_reading_range[0] or args.gas > fetched_account_info.expected_gas_reading_range[1]:
+            raise ValueError("Gas reading is outside of expected range")
+
         gas_success = submit_gas_reading(fetched_account_info, args.gas)
 
     if args.elec is not None:
